@@ -1,0 +1,6 @@
+<config>
+  <item key="consumer_key" value="<Twitter consumer key>" />
+	<item key="consumer_secret" value="<Twitter consumer secret>" />
+	<item key="access_token" value="<Twitter access token>" />
+  <item key="access_token_secret" value="<Twitter access token secret>" />
+</config>
