@@ -2,4 +2,7 @@
 .Rhistory
 .RData
 config/config.xml
+
+*.db
+
 .httr-oauth
