@@ -21,10 +21,10 @@ create_sqlite_accessor <- function(db_name) {
           result <- dbSendQuery(conn, unique_query)
           dbClearResult(result)
         }
-        TRUE
+        nrow(dat)
       }, error = function(e) {
         warning(paste('Table not created: ', e$message))
-        FALSE
+        0
       })
     }
     

@@ -1,8 +1,9 @@
-packages <- c('twitteR', 'XML', 'RSQLite')
+packages <- c('ROAuth', 'XML', 'RSQLite', 'streamR')
 
 sapply(packages, function(p) {
-  has <- require(p)
+  has <- suppressWarnings(require(p, character.only = T))
   if (!has) {
     install.packages(p)
+    require(p, character.only = T)
   }
 })

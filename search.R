@@ -1,25 +1,20 @@
-source('register_oauth.R')
 source('sqlite.R')
+source('data.R')
 
-search_string <- commandArgs(trailingOnly = T)[1]
+library(streamR)
 
-today <- Sys.Date()
-two_days <- as.character(today - 2)
-yesterday <- as.character(today - 1)
+args <- commandArgs(trailingOnly = T)
+search_string <- args[1]
+time <- as.numeric(args[2])
 
-tweets <- suppressWarnings(searchTwitter(search_string, n = 1000, since = two_days, until = yesterday))
-tweet_df <- twListToDF(tweets)
+# search_string <- '#huskers'
+# time <- 10
 
-tweet_df$search_string <- search_string
+# TODO: separate out some sort of logger util
+log_base <- paste0('%s <', search_string, '> %s\n')
 
-sqlite <- create_sqlite_accessor('tweets.db')
-
-log_base <- paste0('%s <', search_string, '> %s')
-if (!file.exists('tweets.db')) {
-  cat(sprintf(log_base, Sys.time(), sprintf('Creating new table with %d tweets', nrow(tweet_df))))
-  sqlite$create_table(tweet_df, 'tweets', id = 'id')
-  
-} else {
-  cat(sprintf(log_base, Sys.time(), sprintf('Appending %d tweets to table', nrow(tweet_df))))
-  sqlite$append_table(tweet_df, 'tweets')
-}
+cat(sprintf(log_base, Sys.time(), 'Collecting tweets'))
+tweets <- read_tweets(search_string, time)
+cat(sprintf(log_base, Sys.time(), sprintf('Collected %d tweets', nrow(tweets))))
+n <- save_tweets(tweets)
+cat(sprintf(log_base, Sys.time(), sprintf('Saved %d tweets', n)))
