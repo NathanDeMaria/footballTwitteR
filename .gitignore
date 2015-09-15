@@ -6,5 +6,6 @@ config/config.xml
 stream.log
 
 *.db
+football.cron
 
 .httr-oauth
