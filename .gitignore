@@ -3,6 +3,8 @@
 .RData
 config/config.xml
 
+stream.log
+
 *.db
 
 .httr-oauth
