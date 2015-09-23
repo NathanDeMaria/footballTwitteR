@@ -16,11 +16,11 @@ tweets[,longitude:=as.numeric(longitude)]
 
 states_map <- map_data('state')
 
-g <- ggplot() + geom_polygon(data = states_map, aes(long, lat, group=group), 
+map_plot <- ggplot() + geom_polygon(data = states_map, aes(long, lat, group=group), 
                              fill='gray', colour='white') + 
   geom_point(data=tweets[!is.na(longitude) & !is.na(latitude)], 
              aes(x=longitude, y=latitude, col=team)) +
   xlim(range(states_map$long)) + ylim(range(states_map$lat)) +
   theme(panel.background = element_blank())
 
-print(g)
+time_plot <- ggplot(tweets) + geom_point(aes(created, scrape_time))
