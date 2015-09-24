@@ -3,7 +3,7 @@
 .RData
 config/config.xml
 
-stream.log
+*.log
 
 *.db
 football.cron
