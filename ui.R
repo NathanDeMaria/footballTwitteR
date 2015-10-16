@@ -2,7 +2,10 @@ library(shiny)
 
 shinyUI(
   bootstrapPage(
-    selectInput('select_plot', label = 'Plot', choices = c('Map', 'Time')),
-    plotOutput('plot')
+    tabsetPanel(
+      tabPanel('Status', tableOutput('status_table')),
+      tabPanel('Map', plotOutput('map')),
+      tabPanel('Time', plotOutput('time'))
+    )
   )
 )
