@@ -1,9 +1,9 @@
-source('sqlite.R')
-source('teams.R')
+source('../sqlite.R')
+source('../teams.R')
 library(data.table)
 library(ggplot2)
 
-db <- create_sqlite_accessor('tweets.db')
+db <- create_sqlite_accessor('../tweets.db')
 tweets <- data.table(db$read_table('tweets'))
 
 tweets[,team:=unlist(teams[search_string])]
