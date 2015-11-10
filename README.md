@@ -32,3 +32,8 @@ My `./rpushbullet.json` looks like:
 
 ## Packages
 This stuff depends on a few packages. If you run `packages.R`, it should install the ones you don't have
+
+
+## Scheduling
+To set this up with cron, run `automation/cron.R` to create `football.cron`. You can then schedule that file by running `crontab football.cron` (assuming you don't have any other things scheduled).
+
