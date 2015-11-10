@@ -1,4 +1,4 @@
-source('sqlite.R')
+source('R/sqlite.R')
 library(RPushbullet)
 library(data.table)
 

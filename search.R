@@ -1,5 +1,5 @@
-source('register_oauth.R')
-source('sqlite.R')
+source('R/register_oauth.R')
+source('R/sqlite.R')
 
 search_string <- commandArgs(trailingOnly = T)[1]
 

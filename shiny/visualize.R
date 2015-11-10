@@ -1,5 +1,5 @@
-source('../sqlite.R')
-source('../teams.R')
+source('../R/sqlite.R')
+source('../R/teams.R')
 library(data.table)
 library(ggplot2)
 

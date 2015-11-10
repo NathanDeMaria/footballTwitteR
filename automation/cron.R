@@ -1,4 +1,4 @@
-source('teams.R')
+source('R/teams.R')
 
 command_format <- '%s cd %s && Rscript %s/search.R "%s" >> %s/backup/stream.log'
 
