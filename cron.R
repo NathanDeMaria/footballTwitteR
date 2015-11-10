@@ -9,7 +9,10 @@ commands <- sapply(names(teams), function(search_string) {
 })
 
 daily_backup <- "0 0 * * * cp %s/tweets.db %s/backup/tweets_$(date +\\%%Y\\%%m\\%%d).db"
+daily_update <- "0 12 * * * cd %s && Rscript %s/push.R"
 
-commands <- c(commands, sprintf(daily_backup, getwd(), getwd()))
+commands <- c(commands, 
+              sprintf(daily_backup, getwd(), getwd()),
+              sprintf(daily_update, getwd(), getwd()))
 
 writeLines(commands, 'football.cron')
