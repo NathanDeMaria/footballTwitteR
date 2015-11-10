@@ -16,5 +16,19 @@ This most likely means that you have incorrectly called setup_twitter_oauth()'
 
 I'm not really sure what it means, and [I'm not sure if the internet does either](https://github.com/geoffjentry/twitteR/issues/74), but installing the `base64enc` package seemed to fix things for me.
 
+
+## RPushbullet
+To setup `RPushbullet`, make an account [here](https://www.pushbullet.com/) and then follow [these instructions](https://github.com/eddelbuettel/rpushbullet#initialization) to setup your account. 
+
+My `./rpushbullet.json` looks like:
+```
+{
+  "key": "<key>",
+  "devices": [],
+  "names": []
+}
+```
+
+
 ## Packages
 This stuff depends on a few packages. If you run `packages.R`, it should install the ones you don't have
