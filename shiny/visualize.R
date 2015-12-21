@@ -1,18 +1,8 @@
-source('../R/sqlite.R')
-source('../R/teams.R')
-library(data.table)
 library(ggplot2)
 
-db <- create_sqlite_accessor('../tweets.db')
-tweets <- data.table(db$read_table('tweets'))
-
-tweets[,team:=unlist(teams[search_string])]
-
-tweets[,created:=as.POSIXct(created, origin='1970-01-01')]
-tweets[,scrape_time:=as.POSIXct(scrape_time, origin='1970-01-01')]
-
-tweets[,latitude:=as.numeric(latitude)]
-tweets[,longitude:=as.numeric(longitude)]
+script_dir <- dirname(sys.frame(1)$ofile)
+setwd(sprintf('%s/..', script_dir))
+tweets <- source('R/data.R')
 
 states_map <- map_data('state')
 
