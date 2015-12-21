@@ -9,3 +9,5 @@ config/config.xml
 football.cron
 
 .httr-oauth
+
+images/
