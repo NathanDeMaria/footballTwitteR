@@ -77,7 +77,15 @@ save_images <- function(sample_date) {
   
   apply(tweet_images, 1, function(r) {
     if (!file.exists(r['filename'])) {
-      download.file(r['image'], destfile = r['filename']) 
+      tryCatch({
+        download.file(r['image'], destfile = r['filename'])   
+      }, error = function(e) {
+        if(substr(e$message, 0, 15) == "cannot open URL") {
+          warning(sprintf("Cannot open URL %s", r['image']))
+        } else {
+          stop(e$message)
+        }
+      })
     }
   })
   tweet_images
